@@ -61,5 +61,5 @@ brute-force-detection-incident-response/
 - [x] **Fase 2:** Investigação de logs, correlação de eventos (4624 / 4625) e identificação de anomalias.
 - [x] **Fase 3:** Detecção de ameaças, regras de SIEM e mapeamento de IoCs.
 - [x] **Fase 4:** Plano de resposta a incidentes e medidas de contenção (NIST SP 800-61).
-- [x] **Fase 5:** Gestão de riscos e enquadramento nos controles ISO/IEC 27001.
-- [x] **Fase 6:** Elaboração de Relatório Técnico e Resumo Executivo para liderança.
+- [x] **Fase 5:** Gestão de riscos, controles ISO/IEC 27001 e parecer DPO (LGPD: avaliação de ransomware/criptomoedas, dano reputacional e prevenção a fraudes/golpes governamentais contra clientes).
+- [x] **Fase 6:** Elaboração de Relatório Técnico forense e Resumo Executivo para liderança (justificativa de investimento em VPN + MFA e ROI de segurança).

@@ -63,5 +63,5 @@ brute-force-detection-incident-response/
 - [x] **Fase 2: Investigación Forense de Logs:** Detección de ataques automatizados de alta velocidad y compromiso de la cuenta `svc_backup` a las 09:18:04.
 - [x] **Fase 3: Detección de Amenazas e Ingeniería SIEM:** Creación de lógica de correlación, políticas de bloqueo y una **Regla Sigma (YAML)** estándar abierta mapeada a MITRE ATT&CK (T1110, T1133).
 - [x] **Fase 4: Respuesta a Incidentes y Contención (NIST SP 800-61):** Protocolo de 15 minutos para cierre de sesión, bloqueo en firewall perimetral, rotación de credenciales y aislamiento del host.
-- [x] **Fase 5: GRC, ISO/IEC 27001:2022 y Evaluación DPO:** Matriz de Riesgo 5x5, mapeo de controles del Anexo A (A.5.15, A.8.5, A.8.18, A.8.20) y notificación regulatoria de privacidad.
-- [x] **Fase 6: Informes:** Entrega de informe técnico forense para ingeniería y resumen ejecutivo con ROI de negocio para la dirección corporativa.
+- [x] **Fase 5: GRC, ISO/IEC 27001:2022 y Evaluación DPO:** Matriz de Riesgo 5x5, mapeo de controles del Anexo A (A.5.15, A.8.5, A.8.18, A.8.20) y notificación regulatoria de privacidad (LGPD / RGPD), abordando riesgos de ransomware/extorsión en criptomonedas, daño reputacional y prevención de fraudes/cobros falsos gubernamentales contra clientes.
+- [x] **Fase 6: Informes:** Entrega de informe técnico forense para ingeniería y resumen ejecutivo presentando el ROI de seguridad, justificación de inversión en VPN + MFA y marco de decisión para la dirección.
