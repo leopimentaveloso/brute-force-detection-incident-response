@@ -1,0 +1,25 @@
+﻿data_hora,usuario,endereco_ip,servico,resultado,codigo_evento,dispositivo,observacoes
+2026-11-09 08:02:11,m.silva,192.0.2.10,RDP,Falha,4625,NOTEBOOK-MARIA,Logon type 10; senha incorreta
+2026-11-09 08:05:43,j.santos,192.0.2.21,RDP,Sucesso,4624,NOTEBOOK-JOAO,Logon type 10; autenticação normal
+2026-11-09 08:17:02,a.costa,192.0.2.35,SMB,Falha,4625,DESKTOP-ANA,Logon type 3; senha incorreta
+2026-11-09 09:14:03,administrator,203.0.113.50,RDP,Falha,4625,UNKNOWN,Logon type 10; origem externa simulada
+2026-11-09 09:14:09,administrator,203.0.113.50,RDP,Falha,4625,UNKNOWN,Logon type 10; origem externa simulada
+2026-11-09 09:14:15,administrator,203.0.113.50,RDP,Falha,4625,UNKNOWN,Logon type 10; origem externa simulada
+2026-11-09 09:14:22,administrator,203.0.113.50,RDP,Falha,4625,UNKNOWN,Logon type 10; origem externa simulada
+2026-11-09 09:14:30,administrator,203.0.113.50,RDP,Falha,4625,UNKNOWN,Logon type 10; origem externa simulada
+2026-11-09 09:15:02,m.silva,203.0.113.50,RDP,Falha,4625,UNKNOWN,Logon type 10; origem externa simulada
+2026-11-09 09:15:08,m.silva,203.0.113.50,RDP,Falha,4625,UNKNOWN,Logon type 10; origem externa simulada
+2026-11-09 09:15:14,m.silva,203.0.113.50,RDP,Falha,4625,UNKNOWN,Logon type 10; origem externa simulada
+2026-11-09 09:15:20,m.silva,203.0.113.50,RDP,Falha,4625,UNKNOWN,Logon type 10; origem externa simulada
+2026-11-09 09:16:01,financeiro,203.0.113.50,RDP,Falha,4625,UNKNOWN,Logon type 10; origem externa simulada
+2026-11-09 09:16:08,financeiro,203.0.113.50,RDP,Falha,4625,UNKNOWN,Logon type 10; origem externa simulada
+2026-11-09 09:16:15,financeiro,203.0.113.50,RDP,Falha,4625,UNKNOWN,Logon type 10; origem externa simulada
+2026-11-09 09:17:03,svc_backup,203.0.113.50,RDP,Falha,4625,UNKNOWN,Logon type 10; origem externa simulada
+2026-11-09 09:17:11,svc_backup,203.0.113.50,RDP,Falha,4625,UNKNOWN,Logon type 10; origem externa simulada
+2026-11-09 09:18:04,svc_backup,203.0.113.50,RDP,Sucesso,4624,UNKNOWN,Logon type 10; sucesso após falhas; evento suspeito
+2026-11-09 09:20:17,m.silva,192.0.2.10,RDP,Sucesso,4624,NOTEBOOK-MARIA,Logon type 10; autenticação normal
+2026-11-09 09:25:44,j.santos,192.0.2.21,RDP,Falha,4625,NOTEBOOK-JOAO,Logon type 10; possível erro de digitação
+2026-11-09 09:31:12,a.costa,192.0.2.35,SMB,Sucesso,4624,DESKTOP-ANA,Logon type 3; autenticação normal
+2026-11-09 10:02:09,administrator,203.0.113.50,RDP,Falha,4625,UNKNOWN,Logon type 10; nova tentativa após sucesso suspeito
+2026-11-09 10:02:16,administrator,203.0.113.50,RDP,Falha,4625,UNKNOWN,Logon type 10; nova tentativa após sucesso suspeito
+2026-11-09 10:10:31,svc_backup,192.0.2.5,SMB,Sucesso,4624,SRV-BACKUP,Logon type 3; acesso interno habitual
