@@ -33,11 +33,19 @@ O formato **Sigma** é o padrão universal da indústria para documentar assinat
 ```yaml
 title: Tentativa de Força Bruta RDP de Origem Externa
 id: 7c5a3d4e-128b-4b21-9988-a6b1234ef012
-status: production
-description: Detecta multiplas falhas de autenticacao RDP originadas de um mesmo IP externo em curto intervalo de tempo.
+status: experimental
+description: >
+  Detecta múltiplas falhas de autenticação RDP (Event ID 4625, Logon Type 10)
+  originadas de um mesmo IP externo em curto intervalo de tempo.
+  Deve ser convertida para a linguagem específica do SIEM alvo (Splunk SPL,
+  Elastic EQL, Microsoft Sentinel KQL, Wazuh, etc.) e validada em ambiente
+  controlado antes de promover para status 'test' ou 'stable'.
 author: Analista de Seguranca / TechSolutions
+date: 2026/11/09
+modified: 2026/11/09
 references:
   - https://attack.mitre.org/techniques/T1110/
+  - https://docs.sigmahq.io/docs/basics/rules.html
 logsource:
   product: windows
   service: security
@@ -47,21 +55,31 @@ detection:
     LogonType: 10
   filter_internal_ips:
     IpAddress|startswith:
-      - '192.0.2.'
+      - '192.168.'
       - '10.'
       - '172.16.'
-  timeframe: 5m
-  condition: selection and not filter_internal_ips | count() by IpAddress >= 3
+      - '192.0.2.'   # bloco fictício usado neste laboratório (RFC 5737)
+  condition: selection and not filter_internal_ips
+# Nota: a agregação por threshold (>= 3 eventos / 5 min / mesmo IP) deve ser
+# implementada como regra de correlação no SIEM alvo, pois o formato Sigma base
+# não suporta nativalmente contagem por janela de tempo na condition.
+# Exemplo para Splunk SPL:
+#   index=wineventlog EventCode=4625 Logon_Type=10 NOT [blocklist de IPs internos]
+#   | bin _time span=5m | stats count by IpAddress, _time | where count >= 3
 fields:
   - IpAddress
   - TargetUserName
   - WorkstationName
+  - LogonType
 falsepositives:
-  - Colaboradores em trabalho remoto digitando senha incorreta consecutivamente (mitigado pelo uso de VPN).
+  - Colaboradores em home office digitando senha incorreta consecutivamente
+    (risco mitigado pela adoção de VPN obrigatória antes do acesso RDP).
 level: high
 tags:
   - attack.credential_access
   - attack.t1110
+  - attack.t1110.001
+  - attack.t1133
 ```
 
 ---

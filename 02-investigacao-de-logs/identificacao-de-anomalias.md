@@ -10,7 +10,7 @@ Um dos maiores desafios de um analista em um Centro de Operações de Segurança
 
 | Critério de Avaliação | Ruído Operacional (Rede Interna) | Ataque de Força Bruta (IP Externo) |
 | :--- | :--- | :--- |
-| **Origem do Tráfego** | Sub-rede interna confiável (`192.0.2.0/24`). | IP externo público não autenticado (`203.0.113.50`). |
+| **Origem do Tráfego** | Sub-rede interna (`192.0.2.0/24`) — bloco fictício reservado para documentação conforme RFC 5737, representando a rede corporativa no cenário do laboratório. | IP (`203.0.113.50`) — bloco fictício reservado para documentação conforme RFC 5737, representando uma origem externa não autorizada no cenário do laboratório. |
 | **Consistência Usuário / Máquina** | **Alta**: Usuária `m.silva` usa `NOTEBOOK-MARIA`; `a.costa` usa `DESKTOP-ANA`. | **Nula**: Dispositivo registrado como `UNKNOWN`, sem vínculo com colaboradores. |
 | **Intervalo Temporal entre Tentativas** | **Humano / Espaçado**: Intervalos de vários minutos (ex: falha às 08:02 e sucesso às 09:20). | **Automatizado / Rápido**: Tentativas a cada **5 a 8 segundos**, humanamente inviáveis sem ferramentas. |
 | **Diversidade de Contas Alvo** | Usuários tentam apenas suas próprias credenciais legítimas. | Alternância rápida de múltiplas contas (`administrator`, `m.silva`, `financeiro`, `svc_backup`). |
@@ -29,18 +29,24 @@ Com base nos registros forenses, o incidente foi classificado tecnicamente como:
 
 ---
 
-## 3. Ponto Crítico de Investigação: O Comprometimento de Conta
+## 3. Ponto Crítico de Investigação: Acesso Suspeito de Alto Risco
 
-O ponto mais crítico da investigação ocorreu às **09:18:04**:
+O evento mais crítico da investigação ocorreu às **09:18:04**:
 
 ```csv
 2026-11-09 09:18:04,svc_backup,203.0.113.50,RDP,Sucesso,4624,UNKNOWN,Logon type 10; sucesso após falhas; evento suspeito
 ```
 
 ### Anomalias Graves Identificadas neste Evento:
-* **Sucesso Imediato após Falhas:** A conta `svc_backup` sofreu falhas consecutivas às 09:17:03 e 09:17:11, obtendo êxito logo na tentativa seguinte (09:18:04).
-* **Desvio de Papel Arquitetural:** `svc_backup` é uma **conta de serviço**. Contas dessa natureza executam rotinas em segundo plano e serviços de rede locais (como visto no evento legítimo das 10:10:31, com `Logon Type 3` via SMB). 
+* **Sucesso Imediato após Falhas:** A conta `svc_backup` sofreu falhas consecutivas às 09:17:03 e 09:17:11, seguidas de êxito na tentativa seguinte (09:18:04).
+* **Desvio de Papel Arquitetural:** `svc_backup` é uma **conta de serviço**. Contas dessa natureza executam rotinas em segundo plano e serviços de rede locais (como visto no evento legítimo das 10:10:31, com `Logon Type 3` via SMB).
 * **Violação de Perímetro:** Uma conta de serviço nunca deve possuir privilégio de logon interativo (`Logon Type 10`) nem permissão de autenticação originada de endereços IP externos.
+
+> **Nota de Maturidade Forense:** Um único evento `4624` não comprova, de forma isolada, que houve invasão consumada. A confirmação plena do comprometimento exigiria correlação adicional: identificador da sessão RDP, processo de logon, método de autenticação utilizado e atividade posterior da conta no sistema. **A classificação adotada neste estudo de caso é de comprometimento presumido, com forte evidência de acesso não autorizado, pendente de validação forense complementar.** Essa distinção é fundamental para a integridade do processo investigativo.
+
+### Classificação Revisada do Incidente:
+* **Status:** **Comprometimento Presumido** — acesso indevido com forte evidência técnica, aguardando correlação forense complementar.
+* **Nível de Severidade:** **ALTO / CRÍTICO** (mantido pela combinação de evidências e pelo perfil de risco da conta envolvida).
 
 ---
 
@@ -56,7 +62,7 @@ Isso aponta para dois cenários táticos do atacante:
 
 ## 5. Conclusão Forense e Severidade do Incidente
 
-* **Classificação:** Incidente de Segurança Confirmado — **Comprometimento de Credencial de Acesso**.
+* **Classificação:** **Comprometimento Presumido** — forte evidência de acesso não autorizado à credencial `svc_backup`, pendente de validação forense complementar (correlação de Session ID, processo de logon e atividade pós-autenticação).
 * **Nível de Severidade:** **ALTO / CRÍTICO**.
-* **Justificativa:** O incidente ultrapassou a fase de simples "tentativa" e resultou no acesso indevido efetivo a uma conta com permissões sensíveis no ambiente.
+* **Justificativa:** A combinação de múltiplas falhas automáticas, alternância de alvos, sucesso em conta de serviço com perfil arquitetural incompatível com logon RDP externo e tentativas posteriores de escalonamento de privilégios configura cenário de alto risco mesmo antes da confirmação forense plena.
 * **Próxima Ação Mandatória:** Acionamento imediato da equipe de Resposta a Incidentes para contenção da conta `svc_backup`, isolamento do host e bloqueio perimetral do IP `203.0.113.50`.

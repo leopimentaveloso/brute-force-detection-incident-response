@@ -1,6 +1,6 @@
-# 04 — Plano de Resposta a Incidentes (NIST SP 800-61 Rev. 2)
+# 04 — Plano de Resposta a Incidentes (NIST SP 800-61 Rev. 3)
 
-Este documento estabelece o fluxo estruturado de Resposta a Incidentes de Segurança da Informação adotado na **TechSolutions Ltda.**, seguindo as diretrizes do **NIST SP 800-61 Rev. 2** (*Computer Security Incident Handling Guide*).
+Este documento estabelece o fluxo estruturado de Resposta a Incidentes de Segurança da Informação adotado na **TechSolutions Ltda.**, seguindo as diretrizes do **NIST SP 800-61 Rev. 3** (*Computer Security Incident Handling Guide*, publicado em abril de 2025), que integra a resposta a incidentes ao gerenciamento de riscos e ao **Cybersecurity Framework (CSF) 2.0**.
 
 ---
 
@@ -25,7 +25,7 @@ flowchart TD
 
 ### Fase 2: Detecção e Análise (*Detection & Analysis*)
 * **Identificação do Gatilho:** Alerta de volume anômalo de eventos `4625` (falhas) originados de IP externo.
-* **Confirmação do Comprometimento:** Identificação do evento `4624` (sucesso) às 09:18:04 na conta `svc_backup`.
+* **Confirmação do Acesso Suspeito:** Identificação do evento `4624` (sucesso) às 09:18:04 na conta `svc_backup`. Classificado como **comprometimento presumido** com forte evidência de acesso não autorizado, pendente de validação forense complementar (Session ID, processo de logon e atividade pós-autenticação).
 * **Classificação de Severidade:** **Nível 1 (Crítico)** devido ao acesso efetivo de credencial privilegiada.
 
 ### Fase 3: Contenção, Erradicação e Recuperação (*Containment, Eradication & Recovery*)

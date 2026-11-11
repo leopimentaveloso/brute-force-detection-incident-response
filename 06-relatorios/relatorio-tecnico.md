@@ -31,14 +31,22 @@ A equipe de segurança identificou o comportamento anômalo, deflagrou o protoco
 09:15:02 — IP 203.0.113.50 rotaciona alvo para 'm.silva' (4 falhas consecutivas em 18 segundos).
 09:16:01 — IP 203.0.113.50 rotaciona alvo para 'financeiro' (3 falhas consecutivas em 14 segundos).
 09:17:03 — IP 203.0.113.50 inicia ataque contra 'svc_backup' (2 falhas consecutivas).
-09:18:04 — [COMPROMETIMENTO] IP 203.0.113.50 autentica com SUCESSO (4624, Logon Type 10) em 'svc_backup'.
+09:18:04 — [ACESSO SUSPEITO] IP 203.0.113.50 autentica com SUCESSO (4624, Logon Type 10) em 'svc_backup'.
+           Classificado como comprometimento presumido — pendente de validação forense complementar.
 ─────────────────────────────────────────────────────────────────────────────────────────────
 09:19:00 — Detecção da anomalia e acionamento do Comitê de Resposta a Incidentes.
-09:22:00 — Bloqueio do IP 203.0.113.50 no Firewall e queda forçada da sessão RDP maliciosa.
-09:25:00 — Desativação da conta 'svc_backup', redefinição de senha e isolamento do servidor em VLAN segura.
-10:02:09 — Segunda tentativa externa frustrada do IP atacante contra 'administrator' (bloqueada na borda).
+09:25:00 — Queda forçada da sessão RDP, desativação da conta 'svc_backup', redefinição de senha
+           e isolamento do servidor em VLAN segura.
+─────────────────────────────────────────────────────────────────────────────────────────────
+10:02:09 — [LOGS DE FIREWALL] Novas tentativas do IP 203.0.113.50 contra 'administrator' detectadas
+10:02:16    no firewall perimetral. O tráfego foi descartado (DROP) antes de atingir o servidor Windows.
+           Essas tentativas NÃO geraram eventos 4625 no log de autenticação do Windows — evidência
+           de que o bloqueio perimetral estava efetivo desde antes das 10:02.
+─────────────────────────────────────────────────────────────────────────────────────────────
 10:10:31 — Validação do serviço interno: rotina legítima de backup via SMB (Logon Type 3) executada com sucesso.
 ```
+
+> **Nota sobre a Distinção de Fontes de Log:** Os eventos de 10:02 estão registrados nos **logs do firewall perimetral** (camada de rede), não nos logs de autenticação do Windows (camada de host). Essa distinção é fundamental na análise forense: logs de host (Windows Security Event Log) só são gerados quando o tráfego chega até o servidor. Logs de borda registram todo o tráfego que tentou entrar na rede, incluindo o que foi bloqueado antes de alcançar qualquer sistema interno. A presença de eventos 4625 apenas até as 09:17 no log do Windows confirma a efetividade do bloqueio perimetral implementado após a detecção.
 
 ---
 
@@ -56,7 +64,7 @@ A equipe de segurança identificou o comportamento anômalo, deflagrou o protoco
 
 * **Endereço IP Atacante:** `203.0.113.50`
 * **Porta e Serviço:** TCP 3389 (RDP)
-* **Conta Comprometida:** `svc_backup`
+* **Conta com Acesso Suspeito:** `svc_backup` — comprometimento presumido, pendente de validação forense complementar
 * **TTPs Mapeadas:**
   * *T1133 (External Remote Services)*
   * *T1110.001 (Password Guessing)*

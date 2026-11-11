@@ -1,6 +1,6 @@
 # 04 — Medidas Técnicas de Contenção e Erradicação
 
-Este documento detalha o protocolo técnico executado imediatamente após a confirmação do comprometimento da credencial `svc_backup` às 09:18:04, priorizando o estancamento da ameaça e a preservação de evidências.
+Este documento detalha o protocolo técnico executado imediatamente após a identificação do acesso presumidamente não autorizado à conta `svc_backup` às 09:18:04, priorizando o estancamento da ameaça e a preservação de evidências.
 
 ---
 

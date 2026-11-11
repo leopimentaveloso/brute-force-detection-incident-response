@@ -1,6 +1,8 @@
 # Detecção de Força Bruta e Resposta a Incidentes (Brute Force Detection & Incident Response)
 
-Projeto prático de segurança defensiva (*Blue Team*), investigação forense em registros de autenticação do Windows e estruturação de resposta a incidentes alinhada às melhores práticas de governança e segurança da informação (**ISO/IEC 27001** e **NIST SP 800-61**).
+Projeto prático de segurança defensiva (*Blue Team*), investigação forense em registros de autenticação do Windows e estruturação de resposta a incidentes alinhada às melhores práticas de governança e segurança da informação (**ISO/IEC 27001:2022** e **NIST SP 800-61 Rev. 3**).
+
+> **Nota sobre os endereços IP utilizados:** Os blocos `192.0.2.0/24` e `203.0.113.0/24` são reservados para documentação e exemplos, conforme a **RFC 5737**. No contexto deste laboratório, `192.0.2.0/24` representa a rede corporativa interna fictícia e `203.0.113.50` representa uma origem externa não autorizada. Não correspondem a redes ou máquinas reais.
 
 ---
 
@@ -42,7 +44,7 @@ brute-force-detection-incident-response/
 │   ├── regras-de-deteccao.md           # Regras SIEM/Sigma e alertas recomendados
 │   └── indicadores-suspeitos.md        # Indicadores de Comprometimento (IoCs)
 ├── 04-resposta-a-incidentes/
-│   ├── plano-de-resposta.md            # Fases de Resposta a Incidentes (NIST SP 800-61)
+│   ├── plano-de-resposta.md            # Fases de Resposta a Incidentes (NIST SP 800-61 Rev. 3)
 │   └── medidas-de-contencao.md         # Ações imediatas de erradicação e recuperação
 ├── 05-gestao-de-riscos/
 │   └── matriz-de-riscos.md             # Avaliação de riscos e mapeamento de controles ISO/IEC 27001

@@ -1,6 +1,8 @@
 # Brute Force Detection & Incident Response
 
-A hands-on Blue Team cybersecurity and digital forensics project: investigating Windows authentication logs, mitigating a remote brute-force attack, and structuring an incident response framework aligned with **ISO/IEC 27001** and **NIST SP 800-61 Rev. 2**.
+A hands-on Blue Team cybersecurity and digital forensics project: investigating Windows authentication logs, mitigating a remote brute-force attack, and structuring an incident response framework aligned with **ISO/IEC 27001:2022** and **NIST SP 800-61 Rev. 3**.
+
+> **Note on IP addresses used:** The ranges `192.0.2.0/24` and `203.0.113.0/24` are reserved for documentation and testing purposes per **RFC 5737**. In this lab, `192.0.2.0/24` represents the fictional internal corporate network and `203.0.113.50` represents a fictional unauthorized external origin. They do not correspond to any real networks or machines.
 
 ---
 
@@ -62,6 +64,6 @@ brute-force-detection-incident-response/
 - [x] **Phase 1: Evidence Collection & Scenario Definition:** Ingestion of 24 forensic authentication events (Event IDs 4624 & 4625).
 - [x] **Phase 2: Log Investigation & Forensic Analysis:** Uncovered high-velocity automated password spraying and credential compromise on `svc_backup` at 09:18:04.
 - [x] **Phase 3: Threat Detection & SIEM Engineering:** Created SIEM correlation logic, account lockout policies, and an open-standard **Sigma Rule (YAML)** mapped to MITRE ATT&CK (T1110, T1133).
-- [x] **Phase 4: Incident Response & Containment (NIST SP 800-61):** 15-minute protocol executing session kill, perimeter firewall block, credential rotation, and host isolation.
-- [x] **Phase 5: GRC, ISO/IEC 27001:2022 & DPO Assessment:** 5x5 Risk Matrix, Annex A controls mapping (A.5.15, A.8.5, A.8.18, A.8.20), and regulatory notification requirements under data protection laws (LGPD / GDPR) addressing ransomware/crypto-extortion risks, brand damage, and secondary spear-phishing/fake government invoice scams against clients.
+- [x] **Phase 4: Incident Response & Containment (NIST SP 800-61 Rev. 3):** 15-minute protocol executing session kill, perimeter firewall block, credential rotation, and host isolation.
+- [x] **Phase 5: GRC, ISO/IEC 27001:2022 & DPO Assessment:** 5x5 Risk Matrix, Annex A controls mapping (A.5.15, A.8.2, A.8.5, A.8.20, A.5.24), and regulatory notification requirements under data protection laws (LGPD / GDPR) addressing ransomware/crypto-extortion risks, brand damage, and secondary spear-phishing/fake government invoice scams against clients.
 - [x] **Phase 6: Reporting:** Delivered both an in-depth technical forensic report for engineering and an executive summary presenting business ROI, justification for mandatory VPN + MFA, and leadership decision frameworks.

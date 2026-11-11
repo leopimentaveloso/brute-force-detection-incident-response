@@ -11,11 +11,11 @@
 
 ## 1. Visão Geral: O que Aconteceu?
 
-Na data de hoje, nossa infraestrutura de tecnologia sofreu um ataque cibernético externo que resultou na **invasão temporária de uma credencial corporativa** de suporte aos backups da empresa (`svc_backup`).
+Na data de hoje, nossa infraestrutura de tecnologia registrou um acesso suspeito a uma credencial corporativa de suporte aos backups da empresa (`svc_backup`), classificado como **comprometimento presumido** com forte evidência técnica de acesso não autorizado, pendente de validação forense complementar quanto à extensão da atividade do invasor após a autenticação.
 
 O incidente foi viabilizado por uma fragilidade histórica em nosso ambiente: a existência de serviços de **acesso remoto direto pela internet** sem camadas intermediárias de proteção e a ausência de políticas rígidas de bloqueio por tentativas incorretas. Utilizando o método mais elementar da cibercriminalidade — a força bruta automatizada por tentativa e erro —, o invasor testou sucessivas senhas em menos de 4 minutos até obter sucesso.
 
-Graças à pronta intervenção do time de segurança, o ataque foi contido nos primeiros 15 minutos: o acesso do invasor foi derrubado, a senha foi alterada e o canal vulnerável foi fechado. **Não houve sequestro de dados (*ransomware*), paralisação das atividades da empresa ou destruição de arquivos.**
+Graças à pronta intervenção do time de segurança, a sessão suspeita foi encerrada nos primeiros 15 minutos: o acesso foi derrubado, a senha foi alterada e o canal vulnerável foi fechado. A investigação forense em andamento irá determinar se houve exfiltração de dados ou persistência no ambiente. **Não foram identificadas, até o momento, evidências de sequestro de dados (*ransomware*), paralisação de serviços ou destruição de arquivos** — porém essa avaliação permanece aberta até a conclusão da análise forense.
 
 ---
 
@@ -45,7 +45,7 @@ flowchart LR
 * **O que faz:** Exige uma confirmação adicional no celular corporativo do colaborador a cada tentativa de login.
 * **Benefício:** Mesmo que um invasor descubra a senha por força bruta ou engenharia social (*phishing*), o acesso continuará completamente bloqueado pela ausência do segundo fator físico.
 
-> **Avaliação de Risco:** Nenhuma solução tecnológica reduz o risco a zero absoluto, mas a combinação de **VPN Fechada + MFA Obrigatório** reduz em mais de **98%** a probabilidade de invasões baseadas em credenciais.
+> **Avaliação de Risco:** Nenhuma solução tecnológica reduz o risco a zero absoluto. A combinação de **VPN Fechada + MFA Obrigatório** representa o padrão de mercado mais consolidado para eliminação desta classe de ataques (força bruta por serviços remotos expostos), sendo amplamente recomendado pelo **NIST CSF 2.0** e pelos **CIS Controls v8**.
 
 ---
 

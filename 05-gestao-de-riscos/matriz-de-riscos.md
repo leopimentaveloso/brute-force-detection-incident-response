@@ -10,7 +10,7 @@ A metodologia adotada mensura a **Probabilidade (1 a 5)** versus o **Impacto (1 
 
 | Dimensão CID | Situação Observada no Incidente | Nível de Afetação |
 | :--- | :--- | :---: |
-| **Confidencialidade** | **Comprometimento Confirmado:** O invasor obteve credenciais válidas da conta `svc_backup`, tendo potencial visibilidade sobre repositórios de dados corporativos. | **Crítico** |
+| **Confidencialidade** | **Comprometimento Presumido:** O invasor obteve autenticação válida na conta `svc_backup` (forte evidência de acesso não autorizado, pendente de validação forense complementar quanto à extensão da atividade pós-autenticação). | **Crítico** |
 | **Integridade** | **Sob Investigação:** As ações pós-comprometimento foram estancadas nos primeiros minutos; não foram constatadas adulterações de arquivos ou alterações de privilégios. | **Médio** |
 | **Disponibilidade** | **Preservada:** Os serviços e a infraestrutura permaneceram operacionais e não sofreram ataques de negação de serviço (DoS) ou sequestro por ransomware. | **Baixo** |
 
@@ -34,7 +34,7 @@ O incidente evidenciou não conformidades e oportunidades diretas de implementa�
 | :--- | :--- | :--- | :--- |
 | **A.5.15** | *Controle de Acesso* | Ausência de diretiva de segregação de funções e logon interativo liberado para contas de serviço. | Configurar *Deny log on through Remote Desktop Services* para todas as contas de serviço (`svc_*`). |
 | **A.8.5** | *Autenticação Segura* | Ausência de política de bloqueio de conta (*Account Lockout*) e ausência de MFA para acessos externos. | Implementar bloqueio após 3 tentativas inválidas consecutivas e impor MFA corporativo. |
-| **A.8.18** | *Gerenciamento de Direitos de Acesso Privilegiados* | A conta de rotina de backup compartilhava vetor de autenticação acessível pela internet pública. | Isolar contas privilegiadas em cofres de senhas (PAM) e restringir conexões exclusivamente à LAN interna. |
+| **A.8.2** | *Direitos de Acesso Privilegiados* | A conta de rotina de backup possuía direitos de logon interativo (RDP) desnecessários e vetor de autenticação acessível pela internet pública. | Isolar contas privilegiadas em cofres de senhas (PAM) e restringir conexões exclusivamente à LAN interna, negando explicitamente direitos de logon remoto interativo. |
 | **A.8.20** | *Segurança de Redes* | Porta RDP (TCP 3389) publicada diretamente na WAN sem camada de filtragem intermediária. | Fechar publicação direta de portas administrativas na internet e canalizar acessos via VPN com túnel criptografado. |
 | **A.5.24** | *Planejamento e Preparação para Gestão de Incidentes* | Detecção inicial dependente de análise manual da equipe de TI após o sucesso do atacante. | Estabelecer regras automatizadas no SIEM para alerta e bloqueio preventivo de força bruta em tempo real. |
 
