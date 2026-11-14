@@ -53,9 +53,10 @@ A equipe de segurança identificou o comportamento anômalo, deflagrou o protoco
 ## 3. Vetor de Ataque e Evidências Forenses
 
 1. **Protocolo Explorador:** RDP (*Remote Desktop Protocol*), porta TCP 3389, sem mitigação de NLA (*Network Level Authentication*) ou exigência de canal VPN.
-2. **Telemetria de Eventos Windows:**
-   * **16 registros com Event ID 4625 (Falha):** Substatus e mensagens indicando senha incorreta repetida sucessivamente com dispositivo `UNKNOWN`.
-   * **1 registro com Event ID 4624 (Sucesso):** Confirmação de logon remoto interativo (`Logon Type 10`) às 09:18:04.
+2. **Telemetria de Eventos Windows e Perímetro:**
+   * **14 registros com Event ID 4625 (Falha) no host:** Substatus e mensagens indicando senha incorreta repetida sucessivamente originadas de `203.0.113.50` contra as contas `administrator`, `m.silva`, `financeiro` e `svc_backup`.
+   * **1 registro com Event ID 4624 (Sucesso) no host:** Confirmação de logon remoto interativo (`Logon Type 10`) às 09:18:04 em `svc_backup`.
+   * **2 registros de DROP no Firewall perimetral:** Tentativas às 10:02:09 e 10:02:16 bloqueadas na borda antes de atingir o servidor, confirmando o sucesso da contenção.
 3. **Anomalia de Perfil:** A conta `svc_backup` é uma credencial programada para operações locais e de rede (`Logon Type 3`), não devendo possuir direito de logon interativo em console ou via RDP.
 
 ---

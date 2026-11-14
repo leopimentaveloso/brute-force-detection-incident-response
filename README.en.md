@@ -37,8 +37,8 @@ brute-force-detection-incident-response/
 ├── README.en.md                        # English documentation
 ├── README.es.md                        # Spanish documentation
 ├── 01-coleta-de-evidencias/
-│   ├── logs-autenticacao.csv           # Authentication logs (Standard RFC 4180)
-│   └── logs-autenticacao-excel.csv     # Formatted for Microsoft Excel (pt-BR/Latin-1)
+│   ├── logs-autenticacao.csv           # Windows host authentication logs (22 events)
+│   └── logs-firewall.csv               # Perimeter firewall drop logs (DROP at 10:02)
 ├── 02-investigacao-de-logs/
 │   ├── analise-de-eventos.md           # Metrics, volumetric analysis, and timeline
 │   └── identificacao-de-anomalias.md   # Attack pattern and forensic anomalies

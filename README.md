@@ -35,8 +35,8 @@ Este projeto complementa o laboratório prático de exploração ofensiva com *M
 brute-force-detection-incident-response/
 ├── README.md
 ├── 01-coleta-de-evidencias/
-│   ├── logs-autenticacao.csv           # Base de logs formato padrão (RFC 4180)
-│   └── logs-autenticacao-excel.csv     # Base formatada para visualização direta no Excel (pt-BR)
+│   ├── logs-autenticacao.csv           # Logs de autenticação do host Windows (22 eventos)
+│   └── logs-firewall.csv               # Logs de descarte perimetral no Firewall (DROP às 10:02)
 ├── 02-investigacao-de-logs/
 │   ├── analise-de-eventos.md           # Investigação técnica, correlação temporal e métricas
 │   └── identificacao-de-anomalias.md   # Mapeamento do padrão de ataque e comprometimento

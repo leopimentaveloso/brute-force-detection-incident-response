@@ -20,6 +20,4 @@
 2026-11-09 09:20:17,m.silva,192.0.2.10,RDP,Sucesso,4624,NOTEBOOK-MARIA,Logon type 10; autenticação normal
 2026-11-09 09:25:44,j.santos,192.0.2.21,RDP,Falha,4625,NOTEBOOK-JOAO,Logon type 10; possível erro de digitação
 2026-11-09 09:31:12,a.costa,192.0.2.35,SMB,Sucesso,4624,DESKTOP-ANA,Logon type 3; autenticação normal
-2026-11-09 10:02:09,administrator,203.0.113.50,RDP,Falha,4625,UNKNOWN,Logon type 10; nova tentativa após sucesso suspeito
-2026-11-09 10:02:16,administrator,203.0.113.50,RDP,Falha,4625,UNKNOWN,Logon type 10; nova tentativa após sucesso suspeito
 2026-11-09 10:10:31,svc_backup,192.0.2.5,SMB,Sucesso,4624,SRV-BACKUP,Logon type 3; acesso interno habitual

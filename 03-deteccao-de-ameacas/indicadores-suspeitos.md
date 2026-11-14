@@ -8,10 +8,10 @@ Este documento cataloga os artefatos técnicos, indicadores observáveis e o map
 
 | Categoria | Indicador / Valor | Contexto / Observação | Ação Recomendada |
 | :--- | :--- | :--- | :--- |
-| **Endereço IPv4** | `203.0.113.50` | IP externo não autorizado de onde originaram 17 eventos (16 falhas e 1 sucesso). | Bloqueio imediato no Firewall de borda (*Drop*). |
+| **Endereço IPv4** | `203.0.113.50` | IP externo não autorizado (15 tentativas registradas no host e 2 tentativas bloqueadas no Firewall perimetral). | Bloqueio imediato no Firewall de borda (*Drop*). |
 | **Protocolo / Porta** | RDP (TCP 3389) | Serviço de Área de Trabalho Remota exposto publicamente na WAN. | Remoção da publicação direta na internet. |
 | **Tipo de Logon** | `Logon Type 10` | Logon remoto interativo registrado nos eventos do Windows. | Proibir para contas não humanas/serviços. |
-| **Conta Comprometida** | `svc_backup` | Credencial descoberta e autenticada com êxito às 09:18:04 (`Event ID 4624`). | Reset de senha, revogação de tokens e auditoria forense. |
+| **Conta com Acesso Suspeito** | `svc_backup` | Comprometimento presumido: autenticação às 09:18:04 (`Event ID 4624`), pendente de validação forense complementar. | Reset de senha, revogação de sessões e auditoria forense. |
 | **Contas Alvo (Varredura)** | `administrator`, `m.silva`, `financeiro` | Contas visadas no ataque de força bruta / *password spraying*. | Notificação aos usuários e checagem preventiva de credenciais. |
 | **Nome de Dispositivo** | `UNKNOWN` | Dispositivo de origem mascarado ou sem resolução de nome NetBIOS/DNS. | Flag de anomalia no SIEM. |
 
